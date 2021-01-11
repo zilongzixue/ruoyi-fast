@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('查看文件信息')" />
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-info-edit" th:object="${fileInfo}">
+        <input name="fileId" th:field="*{fileId}" type="hidden">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">文件名称：</label>
+            <div class="col-sm-8">
+                <input name="fileName" th:field="*{fileName}" class="form-control" type="text" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">文件预览：</label>
+            <div class="col-sm-8">
+                <img class='img-circle img-xs' data-height='auto' data-width='auto' data-target='self' th:src="*{filePath}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">文件路径：</label>
+            <div class="col-sm-8">
+                <input name="filePath" th:field="*{filePath}" class="form-control" type="text" readonly="readonly">
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer" />
+<script th:inline="javascript">
+
+</script>
+</body>
+</html>
