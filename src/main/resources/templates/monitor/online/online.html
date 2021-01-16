@@ -24,13 +24,13 @@
 					</div>
 				</form>
 			</div>
-			
+
 	        <div class="btn-group-sm" id="toolbar" role="group">
 	            <a class="btn btn-danger multiple disabled" onclick="javascript:batchForceLogout()" shiro:hasPermission="monitor:online:batchForceLogout">
 	                <i class="fa fa-sign-out"></i> 强退
 	            </a>
 	        </div>
-	        
+
 	        <div class="col-sm-12 select-table table-striped">
 			    <table id="bootstrap-table"></table>
 			</div>
@@ -128,6 +128,7 @@
 
 		// 单条强退
 		function forceLogout(sessionId) {
+			alert(sessionId);
 		    $.modal.confirm("确定要强制选中用户下线吗？", function() {
 		    	var data = { "ids": sessionId };
 		        $.operate.post(prefix + "/batchForceLogout", data);

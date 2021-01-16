@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.wx.mapper.CUserMapper">
+
+    <resultMap type="CUser" id="CUserResult">
+        <result property="id"    column="id"    />
+        <result property="username"    column="username"    />
+        <result property="openId"    column="open_id"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <resultMap id="CUserGoodsResult" type="CUser" extends="CUserResult">
+        <collection property="goodsList" notNullColumn="id" javaType="java.util.List" resultMap="GoodsResult" />
+    </resultMap>
+
+    <resultMap type="Goods" id="GoodsResult">
+        <result property="id"    column="id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="price"    column="price"    />
+        <result property="name"    column="name"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectCUserVo">
+        select id, username, open_id, create_time from c_user u
+    </sql>
+
+    <select id="selectCUserList" parameterType="CUser" resultMap="CUserResult">
+        <include refid="selectCUserVo"/>
+        <where>
+            <if test="username != null  and username != ''"> and username like concat('%', #{username}, '%')</if>
+            <if test="openId != null  and openId != ''"> and open_id = #{openId}</if>
+            <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+                AND date_format(u.create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+            </if>
+            <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+                AND date_format(u.create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+            </if>
+        </where>
+    </select>
+
+    <select id="selectCUserById" parameterType="Long" resultMap="CUserGoodsResult">
+        select a.id, a.username, a.open_id, a.create_time,
+            b.id, b.user_id, b.price, b.name, b.create_time, b.update_time
+        from c_user a
+        left join t_goods b on b.user_id = a.id
+        where a.id = #{id}
+    </select>
+
+    <insert id="insertCUser" parameterType="CUser">
+        insert into c_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="username != null">username,</if>
+            <if test="openId != null">open_id,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="username != null">#{username},</if>
+            <if test="openId != null">#{openId},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCUser" parameterType="CUser">
+        update c_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="username != null">username = #{username},</if>
+            <if test="openId != null">open_id = #{openId},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCUserById" parameterType="Long">
+        delete from c_user where id = #{id}
+    </delete>
+
+    <delete id="deleteCUserByIds" parameterType="String">
+        delete from c_user where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <delete id="deleteGoodsByUserIds" parameterType="String">
+        delete from t_goods where user_id in
+        <foreach item="userId" collection="array" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteGoodsByUserId" parameterType="Long">
+        delete from t_goods where user_id = #{userId}
+    </delete>
+
+    <insert id="batchGoods">
+        insert into t_goods( id, user_id, price, name, create_time, update_time) values
+		<foreach item="item" index="index" collection="list" separator=",">
+            ( #{item.id}, #{item.userId}, #{item.price}, #{item.name}, #{item.createTime}, #{item.updateTime})
+        </foreach>
+    </insert>
+
+</mapper>

@@ -6,6 +6,7 @@ import ${import};
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.framework.aspectj.lang.annotation.Excel;
+import com.fasterxml.jackson.annotation.JsonProperty;
 #if($table.crud || $table.sub)
 import com.ruoyi.framework.web.domain.BaseEntity;
 #elseif($table.tree)
@@ -14,7 +15,7 @@ import com.ruoyi.framework.web.domain.TreeEntity;
 
 /**
  * ${functionName}对象 ${tableName}
- * 
+ *
  * @author ${author}
  * @date ${datetime}
  */
@@ -46,6 +47,7 @@ public class ${ClassName} extends ${Entity}
     @Excel(name = "${comment}")
 #end
 #end
+    @JsonProperty("$column.javaField")
     private $column.javaType $column.javaField;
 
 #end

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.bdcustomer.mapper.BdCustomerMapper">
+    
+    <resultMap type="BdCustomer" id="BdCustomerResult">
+        <result property="FCUSTID"    column="FCUSTID"    />
+        <result property="FMASTERID"    column="FMASTERID"    />
+        <result property="FNUMBER"    column="FNUMBER"    />
+        <result property="FDOCUMENTSTATUS"    column="FDOCUMENTSTATUS"    />
+        <result property="FCOUNTRY"    column="FCOUNTRY"    />
+        <result property="FPROVINCIAL"    column="FPROVINCIAL"    />
+        <result property="FADDRESS"    column="FADDRESS"    />
+        <result property="FZIP"    column="FZIP"    />
+        <result property="FWEBSITE"    column="FWEBSITE"    />
+        <result property="FTEL"    column="FTEL"    />
+        <result property="FFAX"    column="FFAX"    />
+        <result property="FTAXREGISTERCODE"    column="FTAXREGISTERCODE"    />
+        <result property="FGROUPCUSTID"    column="FGROUPCUSTID"    />
+        <result property="FSUPPLIERID"    column="FSUPPLIERID"    />
+        <result property="FTRADINGCURRID"    column="FTRADINGCURRID"    />
+        <result property="FSALDEPTID"    column="FSALDEPTID"    />
+        <result property="FSALGROUPID"    column="FSALGROUPID"    />
+        <result property="FSELLER"    column="FSELLER"    />
+        <result property="FTRANSLEADTIME"    column="FTRANSLEADTIME"    />
+        <result property="FPRICELISTID"    column="FPRICELISTID"    />
+        <result property="FDISCOUNTLISTID"    column="FDISCOUNTLISTID"    />
+        <result property="FSETTLETYPEID"    column="FSETTLETYPEID"    />
+        <result property="FRECEIVECURRID"    column="FRECEIVECURRID"    />
+        <result property="FRECCONDITIONID"    column="FRECCONDITIONID"    />
+        <result property="FISCREDITCHECK"    column="FISCREDITCHECK"    />
+        <result property="FTAXRATE"    column="FTAXRATE"    />
+        <result property="FFORBIDSTATUS"    column="FFORBIDSTATUS"    />
+        <result property="FCREATEORGID"    column="FCREATEORGID"    />
+        <result property="FUSEORGID"    column="FUSEORGID"    />
+        <result property="FCREATORID"    column="FCREATORID"    />
+        <result property="FCREATEDATE"    column="FCREATEDATE"    />
+        <result property="FMODIFIERID"    column="
+FMODIFIERID"    />
+        <result property="FMODIFYDATE"    column="FMODIFYDATE"    />
+        <result property="FAPPROVERID"    column="FAPPROVERID"    />
+        <result property="FAPPROVEDATE"    column="FAPPROVEDATE"    />
+        <result property="FFORBIDDERID"    column="FFORBIDDERID"    />
+        <result property="FFORBIDDATE"    column="FFORBIDDATE"    />
+        <result property="FTAXTYPE"    column="FTAXTYPE"    />
+        <result property="FCUSTTYPEID"    column="FCUSTTYPEID"    />
+        <result property="FPRIMARYGROUP"    column="FPRIMARYGROUP"    />
+        <result property="FCOMPANYSCALE"    column="FCOMPANYSCALE"    />
+        <result property="FCOMPANYNATURE"    column="FCOMPANYNATURE"    />
+        <result property="FCOMPANYCLASSIFY"    column="FCOMPANYCLASSIFY"    />
+        <result property="FCorrespondOrgID"    column="FCorrespondOrgID"    />
+        <result property="FPRIORITY"    column="FPRIORITY"    />
+        <result property="FINVOICETYPE"    column="FINVOICETYPE"    />
+        <result property="FISDEFPAYER"    column="FISDEFPAYER"    />
+        <result property="FCPADMINCODE"    column="FCPADMINCODE"    />
+        <result property="FISGROUP"    column="FISGROUP"    />
+        <result property="FISTRADE"    column="FISTRADE"    />
+        <result property="FNAME"    column="FNAME"    />
+    </resultMap>
+
+    <sql id="selectBdCustomerVo">
+        select FCUSTID, FMASTERID, FNUMBER, FDOCUMENTSTATUS, FCOUNTRY, FPROVINCIAL, FADDRESS, FZIP, FWEBSITE, FTEL, FFAX, FTAXREGISTERCODE, FGROUPCUSTID, FSUPPLIERID, FTRADINGCURRID, FSALDEPTID, FSALGROUPID, FSELLER, FTRANSLEADTIME, FPRICELISTID, FDISCOUNTLISTID, FSETTLETYPEID, FRECEIVECURRID, FRECCONDITIONID, FISCREDITCHECK, FTAXRATE, FFORBIDSTATUS, FCREATEORGID, FUSEORGID, FCREATORID, FCREATEDATE, 
+FMODIFIERID, FMODIFYDATE, FAPPROVERID, FAPPROVEDATE, FFORBIDDERID, FFORBIDDATE, FTAXTYPE, FCUSTTYPEID, FPRIMARYGROUP, FCOMPANYSCALE, FCOMPANYNATURE, FCOMPANYCLASSIFY, FCorrespondOrgID, FPRIORITY, FINVOICETYPE, FISDEFPAYER, FCPADMINCODE, FISGROUP, FISTRADE, FNAME from t_bd_customer
+    </sql>
+
+    <select id="selectBdCustomerList" parameterType="BdCustomer" resultMap="BdCustomerResult">
+        <include refid="selectBdCustomerVo"/>
+        <where>  
+            <if test="FMASTERID != null  and FMASTERID != ''"> and FMASTERID = #{FMASTERID}</if>
+            <if test="FNUMBER != null  and FNUMBER != ''"> and FNUMBER = #{FNUMBER}</if>
+            <if test="FDOCUMENTSTATUS != null  and FDOCUMENTSTATUS != ''"> and FDOCUMENTSTATUS = #{FDOCUMENTSTATUS}</if>
+            <if test="FCOUNTRY != null  and FCOUNTRY != ''"> and FCOUNTRY = #{FCOUNTRY}</if>
+            <if test="FPROVINCIAL != null  and FPROVINCIAL != ''"> and FPROVINCIAL = #{FPROVINCIAL}</if>
+            <if test="FADDRESS != null  and FADDRESS != ''"> and FADDRESS = #{FADDRESS}</if>
+            <if test="FZIP != null  and FZIP != ''"> and FZIP = #{FZIP}</if>
+            <if test="FWEBSITE != null  and FWEBSITE != ''"> and FWEBSITE = #{FWEBSITE}</if>
+            <if test="FTEL != null  and FTEL != ''"> and FTEL = #{FTEL}</if>
+            <if test="FFAX != null  and FFAX != ''"> and FFAX = #{FFAX}</if>
+            <if test="FTAXREGISTERCODE != null  and FTAXREGISTERCODE != ''"> and FTAXREGISTERCODE = #{FTAXREGISTERCODE}</if>
+            <if test="FGROUPCUSTID != null  and FGROUPCUSTID != ''"> and FGROUPCUSTID = #{FGROUPCUSTID}</if>
+            <if test="FSUPPLIERID != null  and FSUPPLIERID != ''"> and FSUPPLIERID = #{FSUPPLIERID}</if>
+            <if test="FTRADINGCURRID != null  and FTRADINGCURRID != ''"> and FTRADINGCURRID = #{FTRADINGCURRID}</if>
+            <if test="FSALDEPTID != null  and FSALDEPTID != ''"> and FSALDEPTID = #{FSALDEPTID}</if>
+            <if test="FSALGROUPID != null  and FSALGROUPID != ''"> and FSALGROUPID = #{FSALGROUPID}</if>
+            <if test="FSELLER != null  and FSELLER != ''"> and FSELLER = #{FSELLER}</if>
+            <if test="FTRANSLEADTIME != null  and FTRANSLEADTIME != ''"> and FTRANSLEADTIME = #{FTRANSLEADTIME}</if>
+            <if test="FPRICELISTID != null  and FPRICELISTID != ''"> and FPRICELISTID = #{FPRICELISTID}</if>
+            <if test="FDISCOUNTLISTID != null  and FDISCOUNTLISTID != ''"> and FDISCOUNTLISTID = #{FDISCOUNTLISTID}</if>
+            <if test="FSETTLETYPEID != null  and FSETTLETYPEID != ''"> and FSETTLETYPEID = #{FSETTLETYPEID}</if>
+            <if test="FRECEIVECURRID != null  and FRECEIVECURRID != ''"> and FRECEIVECURRID = #{FRECEIVECURRID}</if>
+            <if test="FRECCONDITIONID != null  and FRECCONDITIONID != ''"> and FRECCONDITIONID = #{FRECCONDITIONID}</if>
+            <if test="FISCREDITCHECK != null  and FISCREDITCHECK != ''"> and FISCREDITCHECK = #{FISCREDITCHECK}</if>
+            <if test="FTAXRATE != null  and FTAXRATE != ''"> and FTAXRATE = #{FTAXRATE}</if>
+            <if test="FFORBIDSTATUS != null  and FFORBIDSTATUS != ''"> and FFORBIDSTATUS = #{FFORBIDSTATUS}</if>
+            <if test="FCREATEORGID != null  and FCREATEORGID != ''"> and FCREATEORGID = #{FCREATEORGID}</if>
+            <if test="FUSEORGID != null  and FUSEORGID != ''"> and FUSEORGID = #{FUSEORGID}</if>
+            <if test="FCREATORID != null  and FCREATORID != ''"> and FCREATORID = #{FCREATORID}</if>
+            <if test="FCREATEDATE != null  and FCREATEDATE != ''"> and FCREATEDATE = #{FCREATEDATE}</if>
+            <if test="FMODIFIERID != null  and FMODIFIERID != ''"> and 
+FMODIFIERID = #{FMODIFIERID}</if>
+            <if test="FMODIFYDATE != null  and FMODIFYDATE != ''"> and FMODIFYDATE = #{FMODIFYDATE}</if>
+            <if test="FAPPROVERID != null  and FAPPROVERID != ''"> and FAPPROVERID = #{FAPPROVERID}</if>
+            <if test="FAPPROVEDATE != null  and FAPPROVEDATE != ''"> and FAPPROVEDATE = #{FAPPROVEDATE}</if>
+            <if test="FFORBIDDERID != null  and FFORBIDDERID != ''"> and FFORBIDDERID = #{FFORBIDDERID}</if>
+            <if test="FFORBIDDATE != null  and FFORBIDDATE != ''"> and FFORBIDDATE = #{FFORBIDDATE}</if>
+            <if test="FTAXTYPE != null  and FTAXTYPE != ''"> and FTAXTYPE = #{FTAXTYPE}</if>
+            <if test="FCUSTTYPEID != null  and FCUSTTYPEID != ''"> and FCUSTTYPEID = #{FCUSTTYPEID}</if>
+            <if test="FPRIMARYGROUP != null  and FPRIMARYGROUP != ''"> and FPRIMARYGROUP = #{FPRIMARYGROUP}</if>
+            <if test="FCOMPANYSCALE != null  and FCOMPANYSCALE != ''"> and FCOMPANYSCALE = #{FCOMPANYSCALE}</if>
+            <if test="FCOMPANYNATURE != null  and FCOMPANYNATURE != ''"> and FCOMPANYNATURE = #{FCOMPANYNATURE}</if>
+            <if test="FCOMPANYCLASSIFY != null  and FCOMPANYCLASSIFY != ''"> and FCOMPANYCLASSIFY = #{FCOMPANYCLASSIFY}</if>
+            <if test="FCorrespondOrgID != null  and FCorrespondOrgID != ''"> and FCorrespondOrgID = #{FCorrespondOrgID}</if>
+            <if test="FPRIORITY != null  and FPRIORITY != ''"> and FPRIORITY = #{FPRIORITY}</if>
+            <if test="FINVOICETYPE != null  and FINVOICETYPE != ''"> and FINVOICETYPE = #{FINVOICETYPE}</if>
+            <if test="FISDEFPAYER != null  and FISDEFPAYER != ''"> and FISDEFPAYER = #{FISDEFPAYER}</if>
+            <if test="FCPADMINCODE != null  and FCPADMINCODE != ''"> and FCPADMINCODE = #{FCPADMINCODE}</if>
+            <if test="FISGROUP != null  and FISGROUP != ''"> and FISGROUP = #{FISGROUP}</if>
+            <if test="FISTRADE != null  and FISTRADE != ''"> and FISTRADE = #{FISTRADE}</if>
+            <if test="FNAME != null  and FNAME != ''"> and FNAME like concat('%', #{FNAME}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectBdCustomerById" parameterType="String" resultMap="BdCustomerResult">
+        <include refid="selectBdCustomerVo"/>
+        where FCUSTID = #{FCUSTID}
+    </select>
+        
+    <insert id="insertBdCustomer" parameterType="BdCustomer">
+        insert into t_bd_customer
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="FCUSTID != null">FCUSTID,</if>
+            <if test="FMASTERID != null">FMASTERID,</if>
+            <if test="FNUMBER != null">FNUMBER,</if>
+            <if test="FDOCUMENTSTATUS != null">FDOCUMENTSTATUS,</if>
+            <if test="FCOUNTRY != null">FCOUNTRY,</if>
+            <if test="FPROVINCIAL != null">FPROVINCIAL,</if>
+            <if test="FADDRESS != null">FADDRESS,</if>
+            <if test="FZIP != null">FZIP,</if>
+            <if test="FWEBSITE != null">FWEBSITE,</if>
+            <if test="FTEL != null">FTEL,</if>
+            <if test="FFAX != null">FFAX,</if>
+            <if test="FTAXREGISTERCODE != null">FTAXREGISTERCODE,</if>
+            <if test="FGROUPCUSTID != null">FGROUPCUSTID,</if>
+            <if test="FSUPPLIERID != null">FSUPPLIERID,</if>
+            <if test="FTRADINGCURRID != null">FTRADINGCURRID,</if>
+            <if test="FSALDEPTID != null">FSALDEPTID,</if>
+            <if test="FSALGROUPID != null">FSALGROUPID,</if>
+            <if test="FSELLER != null">FSELLER,</if>
+            <if test="FTRANSLEADTIME != null">FTRANSLEADTIME,</if>
+            <if test="FPRICELISTID != null">FPRICELISTID,</if>
+            <if test="FDISCOUNTLISTID != null">FDISCOUNTLISTID,</if>
+            <if test="FSETTLETYPEID != null">FSETTLETYPEID,</if>
+            <if test="FRECEIVECURRID != null">FRECEIVECURRID,</if>
+            <if test="FRECCONDITIONID != null">FRECCONDITIONID,</if>
+            <if test="FISCREDITCHECK != null">FISCREDITCHECK,</if>
+            <if test="FTAXRATE != null">FTAXRATE,</if>
+            <if test="FFORBIDSTATUS != null">FFORBIDSTATUS,</if>
+            <if test="FCREATEORGID != null">FCREATEORGID,</if>
+            <if test="FUSEORGID != null">FUSEORGID,</if>
+            <if test="FCREATORID != null">FCREATORID,</if>
+            <if test="FCREATEDATE != null">FCREATEDATE,</if>
+            <if test="FMODIFIERID != null">
+FMODIFIERID,</if>
+            <if test="FMODIFYDATE != null">FMODIFYDATE,</if>
+            <if test="FAPPROVERID != null">FAPPROVERID,</if>
+            <if test="FAPPROVEDATE != null">FAPPROVEDATE,</if>
+            <if test="FFORBIDDERID != null">FFORBIDDERID,</if>
+            <if test="FFORBIDDATE != null">FFORBIDDATE,</if>
+            <if test="FTAXTYPE != null">FTAXTYPE,</if>
+            <if test="FCUSTTYPEID != null">FCUSTTYPEID,</if>
+            <if test="FPRIMARYGROUP != null">FPRIMARYGROUP,</if>
+            <if test="FCOMPANYSCALE != null">FCOMPANYSCALE,</if>
+            <if test="FCOMPANYNATURE != null">FCOMPANYNATURE,</if>
+            <if test="FCOMPANYCLASSIFY != null">FCOMPANYCLASSIFY,</if>
+            <if test="FCorrespondOrgID != null and FCorrespondOrgID != ''">FCorrespondOrgID,</if>
+            <if test="FPRIORITY != null">FPRIORITY,</if>
+            <if test="FINVOICETYPE != null">FINVOICETYPE,</if>
+            <if test="FISDEFPAYER != null">FISDEFPAYER,</if>
+            <if test="FCPADMINCODE != null">FCPADMINCODE,</if>
+            <if test="FISGROUP != null">FISGROUP,</if>
+            <if test="FISTRADE != null">FISTRADE,</if>
+            <if test="FNAME != null">FNAME,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="FCUSTID != null">#{FCUSTID},</if>
+            <if test="FMASTERID != null">#{FMASTERID},</if>
+            <if test="FNUMBER != null">#{FNUMBER},</if>
+            <if test="FDOCUMENTSTATUS != null">#{FDOCUMENTSTATUS},</if>
+            <if test="FCOUNTRY != null">#{FCOUNTRY},</if>
+            <if test="FPROVINCIAL != null">#{FPROVINCIAL},</if>
+            <if test="FADDRESS != null">#{FADDRESS},</if>
+            <if test="FZIP != null">#{FZIP},</if>
+            <if test="FWEBSITE != null">#{FWEBSITE},</if>
+            <if test="FTEL != null">#{FTEL},</if>
+            <if test="FFAX != null">#{FFAX},</if>
+            <if test="FTAXREGISTERCODE != null">#{FTAXREGISTERCODE},</if>
+            <if test="FGROUPCUSTID != null">#{FGROUPCUSTID},</if>
+            <if test="FSUPPLIERID != null">#{FSUPPLIERID},</if>
+            <if test="FTRADINGCURRID != null">#{FTRADINGCURRID},</if>
+            <if test="FSALDEPTID != null">#{FSALDEPTID},</if>
+            <if test="FSALGROUPID != null">#{FSALGROUPID},</if>
+            <if test="FSELLER != null">#{FSELLER},</if>
+            <if test="FTRANSLEADTIME != null">#{FTRANSLEADTIME},</if>
+            <if test="FPRICELISTID != null">#{FPRICELISTID},</if>
+            <if test="FDISCOUNTLISTID != null">#{FDISCOUNTLISTID},</if>
+            <if test="FSETTLETYPEID != null">#{FSETTLETYPEID},</if>
+            <if test="FRECEIVECURRID != null">#{FRECEIVECURRID},</if>
+            <if test="FRECCONDITIONID != null">#{FRECCONDITIONID},</if>
+            <if test="FISCREDITCHECK != null">#{FISCREDITCHECK},</if>
+            <if test="FTAXRATE != null">#{FTAXRATE},</if>
+            <if test="FFORBIDSTATUS != null">#{FFORBIDSTATUS},</if>
+            <if test="FCREATEORGID != null">#{FCREATEORGID},</if>
+            <if test="FUSEORGID != null">#{FUSEORGID},</if>
+            <if test="FCREATORID != null">#{FCREATORID},</if>
+            <if test="FCREATEDATE != null">#{FCREATEDATE},</if>
+            <if test="FMODIFIERID != null">#{FMODIFIERID},</if>
+            <if test="FMODIFYDATE != null">#{FMODIFYDATE},</if>
+            <if test="FAPPROVERID != null">#{FAPPROVERID},</if>
+            <if test="FAPPROVEDATE != null">#{FAPPROVEDATE},</if>
+            <if test="FFORBIDDERID != null">#{FFORBIDDERID},</if>
+            <if test="FFORBIDDATE != null">#{FFORBIDDATE},</if>
+            <if test="FTAXTYPE != null">#{FTAXTYPE},</if>
+            <if test="FCUSTTYPEID != null">#{FCUSTTYPEID},</if>
+            <if test="FPRIMARYGROUP != null">#{FPRIMARYGROUP},</if>
+            <if test="FCOMPANYSCALE != null">#{FCOMPANYSCALE},</if>
+            <if test="FCOMPANYNATURE != null">#{FCOMPANYNATURE},</if>
+            <if test="FCOMPANYCLASSIFY != null">#{FCOMPANYCLASSIFY},</if>
+            <if test="FCorrespondOrgID != null and FCorrespondOrgID != ''">#{FCorrespondOrgID},</if>
+            <if test="FPRIORITY != null">#{FPRIORITY},</if>
+            <if test="FINVOICETYPE != null">#{FINVOICETYPE},</if>
+            <if test="FISDEFPAYER != null">#{FISDEFPAYER},</if>
+            <if test="FCPADMINCODE != null">#{FCPADMINCODE},</if>
+            <if test="FISGROUP != null">#{FISGROUP},</if>
+            <if test="FISTRADE != null">#{FISTRADE},</if>
+            <if test="FNAME != null">#{FNAME},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBdCustomer" parameterType="BdCustomer">
+        update t_bd_customer
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="FMASTERID != null">FMASTERID = #{FMASTERID},</if>
+            <if test="FNUMBER != null">FNUMBER = #{FNUMBER},</if>
+            <if test="FDOCUMENTSTATUS != null">FDOCUMENTSTATUS = #{FDOCUMENTSTATUS},</if>
+            <if test="FCOUNTRY != null">FCOUNTRY = #{FCOUNTRY},</if>
+            <if test="FPROVINCIAL != null">FPROVINCIAL = #{FPROVINCIAL},</if>
+            <if test="FADDRESS != null">FADDRESS = #{FADDRESS},</if>
+            <if test="FZIP != null">FZIP = #{FZIP},</if>
+            <if test="FWEBSITE != null">FWEBSITE = #{FWEBSITE},</if>
+            <if test="FTEL != null">FTEL = #{FTEL},</if>
+            <if test="FFAX != null">FFAX = #{FFAX},</if>
+            <if test="FTAXREGISTERCODE != null">FTAXREGISTERCODE = #{FTAXREGISTERCODE},</if>
+            <if test="FGROUPCUSTID != null">FGROUPCUSTID = #{FGROUPCUSTID},</if>
+            <if test="FSUPPLIERID != null">FSUPPLIERID = #{FSUPPLIERID},</if>
+            <if test="FTRADINGCURRID != null">FTRADINGCURRID = #{FTRADINGCURRID},</if>
+            <if test="FSALDEPTID != null">FSALDEPTID = #{FSALDEPTID},</if>
+            <if test="FSALGROUPID != null">FSALGROUPID = #{FSALGROUPID},</if>
+            <if test="FSELLER != null">FSELLER = #{FSELLER},</if>
+            <if test="FTRANSLEADTIME != null">FTRANSLEADTIME = #{FTRANSLEADTIME},</if>
+            <if test="FPRICELISTID != null">FPRICELISTID = #{FPRICELISTID},</if>
+            <if test="FDISCOUNTLISTID != null">FDISCOUNTLISTID = #{FDISCOUNTLISTID},</if>
+            <if test="FSETTLETYPEID != null">FSETTLETYPEID = #{FSETTLETYPEID},</if>
+            <if test="FRECEIVECURRID != null">FRECEIVECURRID = #{FRECEIVECURRID},</if>
+            <if test="FRECCONDITIONID != null">FRECCONDITIONID = #{FRECCONDITIONID},</if>
+            <if test="FISCREDITCHECK != null">FISCREDITCHECK = #{FISCREDITCHECK},</if>
+            <if test="FTAXRATE != null">FTAXRATE = #{FTAXRATE},</if>
+            <if test="FFORBIDSTATUS != null">FFORBIDSTATUS = #{FFORBIDSTATUS},</if>
+            <if test="FCREATEORGID != null">FCREATEORGID = #{FCREATEORGID},</if>
+            <if test="FUSEORGID != null">FUSEORGID = #{FUSEORGID},</if>
+            <if test="FCREATORID != null">FCREATORID = #{FCREATORID},</if>
+            <if test="FCREATEDATE != null">FCREATEDATE = #{FCREATEDATE},</if>
+            <if test="FMODIFIERID != null">
+FMODIFIERID = #{FMODIFIERID},</if>
+            <if test="FMODIFYDATE != null">FMODIFYDATE = #{FMODIFYDATE},</if>
+            <if test="FAPPROVERID != null">FAPPROVERID = #{FAPPROVERID},</if>
+            <if test="FAPPROVEDATE != null">FAPPROVEDATE = #{FAPPROVEDATE},</if>
+            <if test="FFORBIDDERID != null">FFORBIDDERID = #{FFORBIDDERID},</if>
+            <if test="FFORBIDDATE != null">FFORBIDDATE = #{FFORBIDDATE},</if>
+            <if test="FTAXTYPE != null">FTAXTYPE = #{FTAXTYPE},</if>
+            <if test="FCUSTTYPEID != null">FCUSTTYPEID = #{FCUSTTYPEID},</if>
+            <if test="FPRIMARYGROUP != null">FPRIMARYGROUP = #{FPRIMARYGROUP},</if>
+            <if test="FCOMPANYSCALE != null">FCOMPANYSCALE = #{FCOMPANYSCALE},</if>
+            <if test="FCOMPANYNATURE != null">FCOMPANYNATURE = #{FCOMPANYNATURE},</if>
+            <if test="FCOMPANYCLASSIFY != null">FCOMPANYCLASSIFY = #{FCOMPANYCLASSIFY},</if>
+            <if test="FCorrespondOrgID != null and FCorrespondOrgID != ''">FCorrespondOrgID = #{FCorrespondOrgID},</if>
+            <if test="FPRIORITY != null">FPRIORITY = #{FPRIORITY},</if>
+            <if test="FINVOICETYPE != null">FINVOICETYPE = #{FINVOICETYPE},</if>
+            <if test="FISDEFPAYER != null">FISDEFPAYER = #{FISDEFPAYER},</if>
+            <if test="FCPADMINCODE != null">FCPADMINCODE = #{FCPADMINCODE},</if>
+            <if test="FISGROUP != null">FISGROUP = #{FISGROUP},</if>
+            <if test="FISTRADE != null">FISTRADE = #{FISTRADE},</if>
+            <if test="FNAME != null">FNAME = #{FNAME},</if>
+        </trim>
+        where FCUSTID = #{FCUSTID}
+    </update>
+
+    <delete id="deleteBdCustomerById" parameterType="String">
+        delete from t_bd_customer where FCUSTID = #{FCUSTID}
+    </delete>
+
+    <delete id="deleteBdCustomerByIds" parameterType="String">
+        delete from t_bd_customer where FCUSTID in 
+        <foreach item="FCUSTID" collection="array" open="(" separator="," close=")">
+            #{FCUSTID}
+        </foreach>
+    </delete>
+
+</mapper>

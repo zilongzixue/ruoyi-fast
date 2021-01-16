@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('客户列表')" />
+</head>
+<body class="gray-bg">
+     <div class="container-div">
+        <div class="row">
+            <div class="col-sm-12 search-collapse">
+                <form id="formId">
+                    <div class="select-list">
+                        <ul>
+                            <li>
+                                <label>客户编码：</label>
+                                <input type="text" name="FNUMBER"/>
+                            </li>
+                            <li>
+                                <label>状态：</label>
+                                <select name="FDOCUMENTSTATUS">
+                                    <option value="">所有</option>
+                                    <option value="-1">代码生成请选择字典属性</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label>国家：</label>
+                                <input type="text" name="FCOUNTRY"/>
+                            </li>
+                            <li>
+                                <label>地区：</label>
+                                <input type="text" name="FPROVINCIAL"/>
+                            </li>
+                            <li>
+                                <label>通讯地址：</label>
+                                <input type="text" name="FADDRESS"/>
+                            </li>
+                            <li>
+                                <label>邮政编码：</label>
+                                <input type="text" name="FZIP"/>
+                            </li>
+                        </ul>
+<!--                        <ul>-->
+<!--                            <li>-->
+<!--                                <label>唯一ID：</label>-->
+<!--                                <input type="text" name="FMASTERID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>客户编码：</label>-->
+<!--                                <input type="text" name="FNUMBER"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>状态：</label>-->
+<!--                                <select name="FDOCUMENTSTATUS">-->
+<!--                                    <option value="">所有</option>-->
+<!--                                    <option value="-1">代码生成请选择字典属性</option>-->
+<!--                                </select>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>国家：</label>-->
+<!--                                <input type="text" name="FCOUNTRY"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>地区：</label>-->
+<!--                                <input type="text" name="FPROVINCIAL"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>通讯地址：</label>-->
+<!--                                <input type="text" name="FADDRESS"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>邮政编码：</label>-->
+<!--                                <input type="text" name="FZIP"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>公司网址：</label>-->
+<!--                                <input type="text" name="FWEBSITE"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>联系电话：</label>-->
+<!--                                <input type="text" name="FTEL"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>传真：</label>-->
+<!--                                <input type="text" name="FFAX"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>纳税登记号：</label>-->
+<!--                                <input type="text" name="FTAXREGISTERCODE"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>集团客户：</label>-->
+<!--                                <input type="text" name="FGROUPCUSTID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>对应供应商：</label>-->
+<!--                                <input type="text" name="FSUPPLIERID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>交易币种：</label>-->
+<!--                                <input type="text" name="FTRADINGCURRID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>销售部门：</label>-->
+<!--                                <input type="text" name="FSALDEPTID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>销售组：</label>-->
+<!--                                <input type="text" name="FSALGROUPID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>销售员：</label>-->
+<!--                                <input type="text" name="FSELLER"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>运输提前期：</label>-->
+<!--                                <input type="text" name="FTRANSLEADTIME"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>价目表：</label>-->
+<!--                                <input type="text" name="FPRICELISTID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>折扣表：</label>-->
+<!--                                <input type="text" name="FDISCOUNTLISTID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>结算方式：</label>-->
+<!--                                <input type="text" name="FSETTLETYPEID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>收款币别：</label>-->
+<!--                                <input type="text" name="FRECEIVECURRID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>收款条件：</label>-->
+<!--                                <input type="text" name="FRECCONDITIONID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>：</label>-->
+<!--                                <input type="text" name="FISCREDITCHECK"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>：</label>-->
+<!--                                <input type="text" name="FTAXRATE"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>：</label>-->
+<!--                                <select name="FFORBIDSTATUS">-->
+<!--                                    <option value="">所有</option>-->
+<!--                                    <option value="-1">代码生成请选择字典属性</option>-->
+<!--                                </select>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>创建组织：</label>-->
+<!--                                <input type="text" name="FCREATEORGID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>：</label>-->
+<!--                                <input type="text" name="FUSEORGID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>创建人：</label>-->
+<!--                                <input type="text" name="FCREATORID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>创建日期：</label>-->
+<!--                                <input type="text" name="FCREATEDATE"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>修改人：</label>-->
+<!--                                <input type="text" name="FMODIFIERID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>修改日期：</label>-->
+<!--                                <input type="text" name="FMODIFYDATE"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>审核人：</label>-->
+<!--                                <input type="text" name="FAPPROVERID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>审核日期：</label>-->
+<!--                                <input type="text" name="FAPPROVEDATE"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>禁用人：</label>-->
+<!--                                <input type="text" name="FFORBIDDERID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>禁用日期：</label>-->
+<!--                                <input type="text" name="FFORBIDDATE"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>税分类：</label>-->
+<!--                                <select name="FTAXTYPE">-->
+<!--                                    <option value="">所有</option>-->
+<!--                                    <option value="-1">代码生成请选择字典属性</option>-->
+<!--                                </select>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>客户分类：</label>-->
+<!--                                <input type="text" name="FCUSTTYPEID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>客户分组：</label>-->
+<!--                                <input type="text" name="FPRIMARYGROUP"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>公司规模：</label>-->
+<!--                                <input type="text" name="FCOMPANYSCALE"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>公司性质：</label>-->
+<!--                                <input type="text" name="FCOMPANYNATURE"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>公司类别：</label>-->
+<!--                                <input type="text" name="FCOMPANYCLASSIFY"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>对应组织：</label>-->
+<!--                                <input type="text" name="FCorrespondOrgID"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>优先级：</label>-->
+<!--                                <input type="text" name="FPRIORITY"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>增值税发票类型：</label>-->
+<!--                                <select name="FINVOICETYPE">-->
+<!--                                    <option value="">所有</option>-->
+<!--                                    <option value="-1">代码生成请选择字典属性</option>-->
+<!--                                </select>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>默认付款方：</label>-->
+<!--                                <input type="text" name="FISDEFPAYER"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>门户管理员编码：</label>-->
+<!--                                <input type="text" name="FCPADMINCODE"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>是否集团客户：</label>-->
+<!--                                <input type="text" name="FISGROUP"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>是否交易客户：</label>-->
+<!--                                <input type="text" name="FISTRADE"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>：</label>-->
+<!--                                <input type="text" name="FNAME"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>-->
+<!--                                <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+                    </div>
+                </form>
+            </div>
+
+            <div class="btn-group-sm" id="toolbar" role="group">
+                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="customer:bdcustomer:add">
+                    <i class="fa fa-plus"></i> 添加
+                </a>
+                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="customer:bdcustomer:edit">
+                    <i class="fa fa-edit"></i> 修改
+                </a>
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="customer:bdcustomer:remove">
+                    <i class="fa fa-remove"></i> 删除
+                </a>
+                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="customer:bdcustomer:export">
+                    <i class="fa fa-download"></i> 导出
+                </a>
+            </div>
+            <div class="col-sm-12 select-table table-striped">
+                <table id="bootstrap-table"></table>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('customer:bdcustomer:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('customer:bdcustomer:remove')}]];
+        var prefix = ctx + "customer/bdcustomer";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                exportUrl: prefix + "/export",
+                modalName: "客户",
+                columns: [{
+                    checkbox: true
+                },
+                {
+                    field: 'FCUSTID',
+                    title: '客户ID',
+                    visible: false
+                },
+                {
+                    field: 'FMASTERID',
+                    title: '唯一ID'
+                },
+                {
+                    field: 'FNUMBER',
+                    title: '客户编码'
+                },
+                {
+                    field: 'FDOCUMENTSTATUS',
+                    title: '状态'
+                },
+                {
+                    field: 'FCOUNTRY',
+                    title: '国家'
+                },
+                {
+                    field: 'FPROVINCIAL',
+                    title: '地区'
+                },
+                {
+                    field: 'FADDRESS',
+                    title: '通讯地址'
+                },
+                {
+                    field: 'FZIP',
+                    title: '邮政编码'
+                },
+                {
+                    field: 'FWEBSITE',
+                    title: '公司网址'
+                },
+                {
+                    field: 'FTEL',
+                    title: '联系电话'
+                },
+                {
+                    field: 'FFAX',
+                    title: '传真'
+                },
+                {
+                    field: 'FTAXREGISTERCODE',
+                    title: '纳税登记号'
+                },
+                {
+                    field: 'FGROUPCUSTID',
+                    title: '集团客户'
+                },
+                {
+                    field: 'FSUPPLIERID',
+                    title: '对应供应商'
+                },
+                {
+                    field: 'FTRADINGCURRID',
+                    title: '交易币种'
+                },
+                {
+                    field: 'FSALDEPTID',
+                    title: '销售部门'
+                },
+                {
+                    field: 'FSALGROUPID',
+                    title: '销售组'
+                },
+                {
+                    field: 'FSELLER',
+                    title: '销售员'
+                },
+                {
+                    field: 'FTRANSLEADTIME',
+                    title: '运输提前期'
+                },
+                {
+                    field: 'FPRICELISTID',
+                    title: '价目表'
+                },
+                {
+                    field: 'FDISCOUNTLISTID',
+                    title: '折扣表'
+                },
+                {
+                    field: 'FSETTLETYPEID',
+                    title: '结算方式'
+                },
+                {
+                    field: 'FRECEIVECURRID',
+                    title: '收款币别'
+                },
+                {
+                    field: 'FRECCONDITIONID',
+                    title: '收款条件'
+                },
+                {
+                    field: 'FISCREDITCHECK',
+                    title: ''
+                },
+                {
+                    field: 'FTAXRATE',
+                    title: ''
+                },
+                {
+                    field: 'FFORBIDSTATUS',
+                    title: ''
+                },
+                {
+                    field: 'FCREATEORGID',
+                    title: '创建组织'
+                },
+                {
+                    field: 'FUSEORGID',
+                    title: ''
+                },
+                {
+                    field: 'FCREATORID',
+                    title: '创建人'
+                },
+                {
+                    field: 'FCREATEDATE',
+                    title: '创建日期'
+                },
+                {
+                    field: 'FMODIFIERID',
+                    title: '修改人'
+                },
+                {
+                    field: 'FMODIFYDATE',
+                    title: '修改日期'
+                },
+                {
+                    field: 'FAPPROVERID',
+                    title: '审核人'
+                },
+                {
+                    field: 'FAPPROVEDATE',
+                    title: '审核日期'
+                },
+                {
+                    field: 'FFORBIDDERID',
+                    title: '禁用人'
+                },
+                {
+                    field: 'FFORBIDDATE',
+                    title: '禁用日期'
+                },
+                {
+                    field: 'FTAXTYPE',
+                    title: '税分类'
+                },
+                {
+                    field: 'FCUSTTYPEID',
+                    title: '客户分类'
+                },
+                {
+                    field: 'FPRIMARYGROUP',
+                    title: '客户分组'
+                },
+                {
+                    field: 'FCOMPANYSCALE',
+                    title: '公司规模'
+                },
+                {
+                    field: 'FCOMPANYNATURE',
+                    title: '公司性质'
+                },
+                {
+                    field: 'FCOMPANYCLASSIFY',
+                    title: '公司类别'
+                },
+                {
+                    field: 'FCorrespondOrgID',
+                    title: '对应组织'
+                },
+                {
+                    field: 'FPRIORITY',
+                    title: '优先级'
+                },
+                {
+                    field: 'FINVOICETYPE',
+                    title: '增值税发票类型'
+                },
+                {
+                    field: 'FISDEFPAYER',
+                    title: '默认付款方'
+                },
+                {
+                    field: 'FCPADMINCODE',
+                    title: '门户管理员编码'
+                },
+                {
+                    field: 'FISGROUP',
+                    title: '是否集团客户'
+                },
+                {
+                    field: 'FISTRADE',
+                    title: '是否交易客户'
+                },
+                {
+                    field: 'FNAME',
+                    title: ''
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.FCUSTID + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.FCUSTID + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>
